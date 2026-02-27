@@ -1,0 +1,1143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clearline Advisory — Fractional COO for Growing Businesses</title>
+<meta name="description" content="Clearline Advisory provides fractional COO services for female-founded SMBs in Toronto. Operational clarity, scalable systems, and strategic execution.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  /* ── Reset & Base ── */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --ink: #111827;
+    --terracotta: #A0522D;
+    --terracotta-hover: #8B4726;
+    --terracotta-light: rgba(160, 82, 45, 0.08);
+    --warm-sand: #C9B99A;
+    --snow: #FAFAFA;
+    --linen: #FAF8F5;
+    --graphite: #374151;
+    --slate: #64748B;
+    --stone: #94A3B8;
+    --silver: #E5E7EB;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--snow);
+    color: var(--graphite);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    line-height: 1.7;
+    font-size: 16px;
+    overflow-x: hidden;
+  }
+
+  /* ── Layout ── */
+  .container {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  section { padding: 96px 0; }
+
+  /* ── Typography ── */
+  h1, h2, h3 {
+    color: var(--ink);
+    font-weight: 800;
+    letter-spacing: -0.8px;
+    line-height: 1.15;
+  }
+
+  h1 { font-size: clamp(40px, 6vw, 56px); letter-spacing: -1.5px; }
+  h2 { font-size: clamp(28px, 4vw, 36px); margin-bottom: 16px; }
+  h3 { font-size: 20px; margin-bottom: 8px; font-weight: 700; }
+
+  p { max-width: 640px; }
+
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--stone);
+    margin-bottom: 16px;
+  }
+
+  /* ── Navigation ── */
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: rgba(250, 250, 250, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--silver);
+  }
+
+  .nav-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 32px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-logo { display: flex; flex-direction: column; gap: 0; }
+  .nav-logo-name { font-size: 18px; font-weight: 800; color: var(--ink); letter-spacing: -0.5px; line-height: 1; }
+  .nav-logo-sub { font-size: 8px; font-weight: 600; letter-spacing: 3.5px; text-transform: uppercase; color: var(--slate); line-height: 1; margin-top: 3px; }
+
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { font-size: 13px; font-weight: 500; color: var(--slate); text-decoration: none; transition: color 0.2s ease; }
+  .nav-links a:hover { color: var(--ink); }
+
+  .nav-cta {
+    background: var(--terracotta);
+    color: white !important;
+    padding: 8px 20px;
+    border-radius: 6px;
+    font-weight: 600 !important;
+    transition: background 0.2s ease !important;
+  }
+  .nav-cta:hover { background: var(--terracotta-hover); color: white !important; }
+
+  .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+  .nav-toggle span { display: block; width: 20px; height: 2px; background: var(--ink); margin: 4px 0; transition: 0.2s; }
+
+  /* ── Hero ── */
+  .hero {
+    padding: 160px 0 120px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .hero-accent {
+    width: 48px;
+    height: 4px;
+    background: var(--terracotta);
+    border-radius: 2px;
+    margin-bottom: 32px;
+  }
+
+  .hero h1 { margin-bottom: 24px; }
+  .hero h1 span { color: var(--terracotta); }
+
+  .hero-sub {
+    font-size: 18px;
+    color: var(--slate);
+    margin-bottom: 40px;
+    line-height: 1.6;
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--terracotta);
+    color: white;
+    padding: 14px 32px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s ease, transform 0.15s ease;
+    letter-spacing: -0.2px;
+  }
+
+  .hero-cta:hover {
+    background: var(--terracotta-hover);
+    transform: translateY(-1px);
+  }
+
+  .hero-cta-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--ink);
+    padding: 14px 24px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    margin-left: 8px;
+    transition: color 0.2s ease;
+  }
+
+  .hero-cta-secondary:hover { color: var(--terracotta); }
+
+  /* ── Hero Graphic ── */
+  .hero-graphic {
+    position: relative;
+    width: 100%;
+    height: 400px;
+  }
+
+  .hero-graphic svg { width: 100%; height: 100%; }
+
+  /* Floating cards in hero */
+  .float-card {
+    position: absolute;
+    background: white;
+    border-radius: 12px;
+    padding: 16px 20px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+    animation: floatUp 6s ease-in-out infinite;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .float-card:nth-child(2) { animation-delay: -2s; }
+  .float-card:nth-child(3) { animation-delay: -4s; }
+
+  @keyframes floatUp {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .float-card .fc-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .fc-green { background: #ECFDF5; color: #059669; }
+  .fc-terra { background: var(--terracotta-light); color: var(--terracotta); }
+  .fc-blue { background: #EFF6FF; color: #3B82F6; }
+
+  .float-card .fc-meta {
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--slate);
+    margin-top: 2px;
+  }
+
+  .fc-1 { top: 20px; right: 10%; }
+  .fc-2 { top: 45%; left: 5%; }
+  .fc-3 { bottom: 30px; right: 15%; }
+
+  /* ── Divider ── */
+  .divider {
+    height: 1px;
+    background: var(--silver);
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+
+  /* ── Value Proposition ── */
+  .value-section { background: var(--linen); }
+
+  .value-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .value-stat {
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--terracotta);
+    letter-spacing: -2px;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .value-stat-label {
+    font-size: 14px;
+    color: var(--slate);
+    font-weight: 500;
+  }
+
+  .value-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    margin-top: 40px;
+  }
+
+  /* Stat animation */
+  .value-stat-box {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .value-stat-box.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .value-stat-box:nth-child(2) { transition-delay: 0.1s; }
+  .value-stat-box:nth-child(3) { transition-delay: 0.2s; }
+  .value-stat-box:nth-child(4) { transition-delay: 0.3s; }
+
+  /* Mini bar chart in value section */
+  .value-chart {
+    margin-top: 32px;
+    padding: 24px;
+    background: white;
+    border-radius: 12px;
+    border: 1px solid var(--silver);
+  }
+
+  .value-chart-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--slate);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+  }
+
+  .chart-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .chart-bar-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .chart-bar-label {
+    font-size: 12px;
+    color: var(--slate);
+    width: 80px;
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+  .chart-bar-track {
+    flex: 1;
+    height: 24px;
+    background: var(--silver);
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .chart-bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    width: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    color: white;
+  }
+
+  .chart-bar-fill.bar-visible { /* widths set inline */ }
+
+  .bar-terra { background: var(--terracotta); }
+  .bar-sand { background: var(--warm-sand); }
+
+  /* ── Services ── */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 48px;
+  }
+
+  .service-card {
+    background: white;
+    border: 1px solid var(--silver);
+    border-radius: 12px;
+    padding: 36px 32px;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .service-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  }
+
+  .service-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: var(--terracotta-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .service-icon svg {
+    width: 24px;
+    height: 24px;
+    stroke: var(--terracotta);
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .service-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    background: var(--terracotta-light);
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+  }
+
+  .service-card h3 { font-size: 20px; margin-bottom: 12px; }
+
+  .service-card p {
+    font-size: 14px;
+    color: var(--slate);
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  .service-detail {
+    font-size: 13px;
+    color: var(--stone);
+    padding-top: 16px;
+    border-top: 1px solid var(--silver);
+  }
+
+  /* Hover accent line on service cards */
+  .service-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--terracotta);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.3s ease;
+  }
+
+  .service-card:hover::after { transform: scaleX(1); }
+
+  /* ── Process ── */
+  .process-section {
+    background: var(--ink);
+    color: white;
+    position: relative;
+  }
+
+  .process-section .section-label { color: var(--slate); }
+  .process-section h2 { color: white; }
+  .process-section > .container > p { color: var(--stone); }
+
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 48px;
+    position: relative;
+  }
+
+  /* Timeline connector */
+  .process-steps::before {
+    content: '';
+    position: absolute;
+    top: 32px;
+    left: calc(33.33% / 2);
+    right: calc(33.33% / 2);
+    height: 2px;
+    background: linear-gradient(90deg, var(--terracotta) 0%, var(--warm-sand) 50%, var(--terracotta) 100%);
+    opacity: 0.4;
+  }
+
+  .process-step { position: relative; }
+
+  .step-number-wrap {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .step-number {
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--terracotta);
+    letter-spacing: -2px;
+    line-height: 1;
+    position: relative;
+    z-index: 1;
+  }
+
+  .step-dot {
+    width: 12px;
+    height: 12px;
+    background: var(--terracotta);
+    border-radius: 50%;
+    position: absolute;
+    top: -8px;
+    right: -16px;
+    box-shadow: 0 0 0 4px rgba(160, 82, 45, 0.2);
+  }
+
+  .process-step h3 {
+    color: white;
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+
+  .process-step p {
+    font-size: 14px;
+    color: var(--slate);
+    line-height: 1.6;
+    max-width: none;
+  }
+
+  /* Process step icon row */
+  .step-icons {
+    display: flex;
+    gap: 6px;
+    margin-top: 16px;
+  }
+
+  .step-icon-pill {
+    font-size: 10px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 100px;
+    background: rgba(160, 82, 45, 0.12);
+    color: var(--warm-sand);
+    letter-spacing: 0.5px;
+  }
+
+  /* ── About / Founder ── */
+  .about-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+
+  .about-text p {
+    margin-bottom: 20px;
+    max-width: none;
+  }
+
+  .about-credentials {
+    background: var(--linen);
+    border-radius: 12px;
+    padding: 32px;
+  }
+
+  .credential-item {
+    padding: 12px 0;
+    border-bottom: 1px solid var(--silver);
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .credential-item:last-child { border-bottom: none; }
+
+  .credential-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background: var(--terracotta-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .credential-icon svg {
+    width: 14px;
+    height: 14px;
+    stroke: var(--terracotta);
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  .credential-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--stone);
+  }
+
+  .credential-value {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-top: 4px;
+  }
+
+  /* ── CTA Section ── */
+  .cta-section {
+    background: var(--linen);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-section p {
+    margin: 0 auto 32px;
+    font-size: 17px;
+    color: var(--slate);
+  }
+
+  .cta-section .hero-cta {
+    font-size: 16px;
+    padding: 16px 36px;
+  }
+
+  /* Decorative dots behind CTA */
+  .cta-decoration {
+    position: absolute;
+    opacity: 0.06;
+  }
+
+  .cta-decoration.left { top: 20%; left: 5%; }
+  .cta-decoration.right { bottom: 10%; right: 5%; }
+
+  /* ── Footer ── */
+  footer {
+    padding: 48px 0;
+    border-top: 1px solid var(--silver);
+  }
+
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-copy { font-size: 13px; color: var(--stone); }
+
+  .footer-links { display: flex; gap: 24px; list-style: none; }
+  .footer-links a { font-size: 13px; color: var(--stone); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--ink); }
+
+  /* ── Scroll reveal ── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+
+  /* ── Responsive ── */
+  @media (max-width: 768px) {
+    section { padding: 64px 0; }
+    .hero { padding: 120px 0 80px; }
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-graphic { display: none; }
+
+    .nav-links { display: none; }
+    .nav-toggle { display: block; }
+
+    .value-grid,
+    .about-content { grid-template-columns: 1fr; gap: 40px; }
+
+    .services-grid,
+    .process-steps { grid-template-columns: 1fr; }
+
+    .process-steps::before { display: none; }
+
+    .value-stats { grid-template-columns: 1fr 1fr; }
+
+    .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
+
+    .cta-decoration { display: none; }
+  }
+
+  /* Mobile nav toggle */
+  @media (max-width: 768px) {
+    .nav-links.show {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 64px;
+      left: 0;
+      right: 0;
+      background: rgba(250, 250, 250, 0.98);
+      backdrop-filter: blur(12px);
+      padding: 24px 32px;
+      border-bottom: 1px solid var(--silver);
+      gap: 16px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ── Navigation ── -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">
+      <div class="nav-logo-name">Clearline</div>
+      <div class="nav-logo-sub">Advisory</div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact" class="nav-cta">Get in touch</a></li>
+    </ul>
+    <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('show')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ── Hero ── -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-accent"></div>
+        <h1>Your business has outgrown<br>its operating model.</h1>
+        <p class="hero-sub">Clearline Advisory helps founder-led businesses in Toronto build the operational infrastructure they need to scale — without the overhead of a full-time COO.</p>
+        <div>
+          <a href="#contact" class="hero-cta">Book a discovery call &rarr;</a>
+          <a href="#services" class="hero-cta-secondary">See how it works</a>
+        </div>
+      </div>
+
+      <!-- Hero graphic: floating dashboard cards -->
+      <div class="hero-graphic" aria-hidden="true">
+        <!-- Abstract network/org SVG background -->
+        <svg viewBox="0 0 500 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Connection lines -->
+          <line x1="250" y1="120" x2="140" y2="220" stroke="#C9B99A" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.5"/>
+          <line x1="250" y1="120" x2="360" y2="200" stroke="#C9B99A" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.5"/>
+          <line x1="140" y1="220" x2="200" y2="320" stroke="#C9B99A" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.5"/>
+          <line x1="360" y1="200" x2="320" y2="310" stroke="#C9B99A" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.5"/>
+          <line x1="140" y1="220" x2="60" y2="300" stroke="#C9B99A" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.3"/>
+          <line x1="360" y1="200" x2="440" y2="280" stroke="#C9B99A" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.3"/>
+
+          <!-- Nodes -->
+          <circle cx="250" cy="120" r="20" fill="#A0522D" opacity="0.12"/>
+          <circle cx="250" cy="120" r="8" fill="#A0522D"/>
+          <circle cx="140" cy="220" r="16" fill="#C9B99A" opacity="0.15"/>
+          <circle cx="140" cy="220" r="6" fill="#C9B99A"/>
+          <circle cx="360" cy="200" r="16" fill="#C9B99A" opacity="0.15"/>
+          <circle cx="360" cy="200" r="6" fill="#C9B99A"/>
+          <circle cx="200" cy="320" r="12" fill="#94A3B8" opacity="0.15"/>
+          <circle cx="200" cy="320" r="5" fill="#94A3B8"/>
+          <circle cx="320" cy="310" r="12" fill="#94A3B8" opacity="0.15"/>
+          <circle cx="320" cy="310" r="5" fill="#94A3B8"/>
+          <circle cx="60" cy="300" r="10" fill="#E5E7EB" opacity="0.3"/>
+          <circle cx="60" cy="300" r="4" fill="#94A3B8" opacity="0.5"/>
+          <circle cx="440" cy="280" r="10" fill="#E5E7EB" opacity="0.3"/>
+          <circle cx="440" cy="280" r="4" fill="#94A3B8" opacity="0.5"/>
+
+          <!-- Decorative rings -->
+          <circle cx="250" cy="120" r="36" stroke="#A0522D" stroke-width="1" opacity="0.1" fill="none"/>
+          <circle cx="250" cy="200" r="120" stroke="#C9B99A" stroke-width="0.5" opacity="0.08" fill="none" stroke-dasharray="4 6"/>
+        </svg>
+
+        <!-- Floating info cards -->
+        <div class="float-card fc-1">
+          <div class="fc-icon fc-green">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <div>
+            <div>Process documented</div>
+            <div class="fc-meta">Onboarding workflow</div>
+          </div>
+        </div>
+
+        <div class="float-card fc-2">
+          <div class="fc-icon fc-terra">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 20V10M6 20V4M18 20v-6"/></svg>
+          </div>
+          <div>
+            <div>10+ hrs saved/week</div>
+            <div class="fc-meta">Operations efficiency</div>
+          </div>
+        </div>
+
+        <div class="float-card fc-3">
+          <div class="fc-icon fc-blue">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <div>
+            <div>90-day roadmap</div>
+            <div class="fc-meta">Clear milestones</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── Value Proposition ── -->
+<section class="value-section">
+  <div class="container">
+    <div class="value-grid">
+      <div>
+        <div class="section-label">The challenge</div>
+        <h2>You started this business. Now it needs systems to match your ambition.</h2>
+        <p>Most founders are brilliant at what they do — but eventually, growth creates bottlenecks. Decisions pile up. Processes live in your head. Your team needs structure you haven't had time to build.</p>
+        <p style="margin-top: 16px;">That's where a fractional COO comes in — senior operational leadership, on your terms, at a fraction of the cost.</p>
+
+        <!-- Before/After chart -->
+        <div class="value-chart reveal">
+          <div class="value-chart-title">Where your time goes</div>
+          <div class="chart-bars">
+            <div class="chart-bar-row">
+              <div class="chart-bar-label">Before</div>
+              <div class="chart-bar-track">
+                <div class="chart-bar-fill bar-sand" data-width="75%" style="width: 0">75% ops</div>
+              </div>
+            </div>
+            <div class="chart-bar-row">
+              <div class="chart-bar-label">After</div>
+              <div class="chart-bar-track">
+                <div class="chart-bar-fill bar-terra" data-width="30%" style="width: 0">30% ops</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="value-stats">
+          <div class="value-stat-box">
+            <div class="value-stat" data-target="73" data-suffix="%">0%</div>
+            <div class="value-stat-label">of founders say operations is their biggest growth blocker</div>
+          </div>
+          <div class="value-stat-box">
+            <div class="value-stat" data-target="10" data-suffix="+">0+</div>
+            <div class="value-stat-label">hours freed per week with proper systems in place</div>
+          </div>
+          <div class="value-stat-box">
+            <div class="value-stat" data-target="40" data-suffix="%">0%</div>
+            <div class="value-stat-label">typical cost savings through operating model redesign</div>
+          </div>
+          <div class="value-stat-box">
+            <div class="value-stat" data-target="90" data-suffix="">0</div>
+            <div class="value-stat-label">days to measurable operational improvement</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Services ── -->
+<section id="services">
+  <div class="container">
+    <div class="section-label">Services</div>
+    <h2>Three ways to work together</h2>
+    <p>Every engagement starts with understanding where you are. From there, we build the right plan for your stage and budget.</p>
+
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <div class="service-tag">Starting point</div>
+        <h3>Ops Diagnostic</h3>
+        <p>A comprehensive assessment of your current operations — identifying bottlenecks, founder dependencies, and the highest-impact areas for improvement.</p>
+        <div class="service-detail">2-week engagement &middot; Includes prioritized roadmap</div>
+      </div>
+
+      <div class="service-card reveal reveal-delay-1">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <div class="service-tag">Most popular</div>
+        <h3>Implementation Sprint</h3>
+        <p>Hands-on execution of your operational roadmap. We build the systems, document the processes, and set up the tools your team needs to run without you.</p>
+        <div class="service-detail">8&ndash;12 week engagement &middot; Monthly retainer</div>
+      </div>
+
+      <div class="service-card reveal reveal-delay-2">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="service-tag">Ongoing</div>
+        <h3>Retained Advisory</h3>
+        <p>Ongoing fractional COO support — strategic planning, team alignment, quarterly reviews, and operational leadership as your business evolves.</p>
+        <div class="service-detail">Flexible monthly commitment &middot; 2 days/week typical</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── Process ── -->
+<section id="process" class="process-section">
+  <div class="container">
+    <div class="section-label">How it works</div>
+    <h2>From chaos to clarity in three steps</h2>
+    <p>No lengthy proposals or complicated onboarding. We start with a conversation and move fast.</p>
+
+    <div class="process-steps">
+      <div class="process-step reveal">
+        <div class="step-number-wrap">
+          <div class="step-number">01</div>
+          <div class="step-dot"></div>
+        </div>
+        <h3>Discovery Call</h3>
+        <p>A 30-minute conversation to understand your business, your bottlenecks, and whether we're the right fit. No cost, no obligation.</p>
+        <div class="step-icons">
+          <span class="step-icon-pill">30 min</span>
+          <span class="step-icon-pill">Free</span>
+        </div>
+      </div>
+
+      <div class="process-step reveal reveal-delay-1">
+        <div class="step-number-wrap">
+          <div class="step-number">02</div>
+          <div class="step-dot"></div>
+        </div>
+        <h3>Diagnostic & Roadmap</h3>
+        <p>A structured assessment of your operations, resulting in a clear, prioritized plan with quick wins and long-term improvements.</p>
+        <div class="step-icons">
+          <span class="step-icon-pill">2 weeks</span>
+          <span class="step-icon-pill">Roadmap</span>
+        </div>
+      </div>
+
+      <div class="process-step reveal reveal-delay-2">
+        <div class="step-number-wrap">
+          <div class="step-number">03</div>
+          <div class="step-dot"></div>
+        </div>
+        <h3>Build & Implement</h3>
+        <p>We roll up our sleeves and build the systems together — processes, tools, documentation, and team alignment to make it stick.</p>
+        <div class="step-icons">
+          <span class="step-icon-pill">8-12 weeks</span>
+          <span class="step-icon-pill">Hands-on</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── About ── -->
+<section id="about">
+  <div class="container">
+    <div class="section-label">About</div>
+    <div class="about-content">
+      <div class="about-text">
+        <h2>Built by a founder who's been in the room</h2>
+        <p>Clearline Advisory is led by Charlotte Lee Rasmussen, an operations strategist with deep experience in scaling businesses from the inside.</p>
+        <p>With a background in global agency operations at one of the world's largest marketing networks, Charlotte has spent years building the systems that keep complex, multi-stakeholder organizations running smoothly — project management frameworks, cross-functional workflows, resource planning, and operational reporting.</p>
+        <p>She founded Clearline Advisory with a specific mission: to bring that same calibre of operational thinking to founder-led businesses that are ready to scale but don't yet need (or can't yet afford) a full-time COO.</p>
+        <p style="color: var(--slate); font-style: italic;">Based in Toronto. Working with ambitious founders across the GTA.</p>
+      </div>
+      <div class="about-credentials">
+        <div class="credential-item">
+          <div class="credential-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12l2 2 4-4"/></svg>
+          </div>
+          <div>
+            <div class="credential-label">Focus</div>
+            <div class="credential-value">Female-founded SMBs ($500K&ndash;$5M)</div>
+          </div>
+        </div>
+        <div class="credential-item">
+          <div class="credential-icon">
+            <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 7V5a4 4 0 0 0-8 0v2"/></svg>
+          </div>
+          <div>
+            <div class="credential-label">Background</div>
+            <div class="credential-value">Global agency operations (WPP network)</div>
+          </div>
+        </div>
+        <div class="credential-item">
+          <div class="credential-icon">
+            <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <div>
+            <div class="credential-label">Expertise</div>
+            <div class="credential-value">Process design, team structure, operational systems</div>
+          </div>
+        </div>
+        <div class="credential-item">
+          <div class="credential-icon">
+            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div>
+            <div class="credential-label">Location</div>
+            <div class="credential-value">Toronto, Ontario</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ── CTA ── -->
+<section id="contact" class="cta-section">
+  <div class="container" style="position: relative; z-index: 1;">
+    <div class="section-label">Get started</div>
+    <h2>Ready to build operations<br>that scale with you?</h2>
+    <p>Book a free 30-minute discovery call. We'll talk about where you are, where you want to go, and whether Clearline is the right fit.</p>
+    <a href="mailto:charlotte@clearlineadvisory.ca" class="hero-cta">Book a discovery call &rarr;</a>
+  </div>
+
+  <!-- Decorative dot grids -->
+  <svg class="cta-decoration left" width="120" height="120" viewBox="0 0 120 120" aria-hidden="true">
+    <g fill="#A0522D">
+      <circle cx="10" cy="10" r="3"/><circle cx="30" cy="10" r="3"/><circle cx="50" cy="10" r="3"/><circle cx="70" cy="10" r="3"/><circle cx="90" cy="10" r="3"/><circle cx="110" cy="10" r="3"/>
+      <circle cx="10" cy="30" r="3"/><circle cx="30" cy="30" r="3"/><circle cx="50" cy="30" r="3"/><circle cx="70" cy="30" r="3"/><circle cx="90" cy="30" r="3"/><circle cx="110" cy="30" r="3"/>
+      <circle cx="10" cy="50" r="3"/><circle cx="30" cy="50" r="3"/><circle cx="50" cy="50" r="3"/><circle cx="70" cy="50" r="3"/><circle cx="90" cy="50" r="3"/><circle cx="110" cy="50" r="3"/>
+      <circle cx="10" cy="70" r="3"/><circle cx="30" cy="70" r="3"/><circle cx="50" cy="70" r="3"/><circle cx="70" cy="70" r="3"/><circle cx="90" cy="70" r="3"/><circle cx="110" cy="70" r="3"/>
+      <circle cx="10" cy="90" r="3"/><circle cx="30" cy="90" r="3"/><circle cx="50" cy="90" r="3"/><circle cx="70" cy="90" r="3"/><circle cx="90" cy="90" r="3"/><circle cx="110" cy="90" r="3"/>
+      <circle cx="10" cy="110" r="3"/><circle cx="30" cy="110" r="3"/><circle cx="50" cy="110" r="3"/><circle cx="70" cy="110" r="3"/><circle cx="90" cy="110" r="3"/><circle cx="110" cy="110" r="3"/>
+    </g>
+  </svg>
+  <svg class="cta-decoration right" width="80" height="80" viewBox="0 0 80 80" aria-hidden="true">
+    <g fill="#C9B99A">
+      <circle cx="10" cy="10" r="2.5"/><circle cx="30" cy="10" r="2.5"/><circle cx="50" cy="10" r="2.5"/><circle cx="70" cy="10" r="2.5"/>
+      <circle cx="10" cy="30" r="2.5"/><circle cx="30" cy="30" r="2.5"/><circle cx="50" cy="30" r="2.5"/><circle cx="70" cy="30" r="2.5"/>
+      <circle cx="10" cy="50" r="2.5"/><circle cx="30" cy="50" r="2.5"/><circle cx="50" cy="50" r="2.5"/><circle cx="70" cy="50" r="2.5"/>
+      <circle cx="10" cy="70" r="2.5"/><circle cx="30" cy="70" r="2.5"/><circle cx="50" cy="70" r="2.5"/><circle cx="70" cy="70" r="2.5"/>
+    </g>
+  </svg>
+</section>
+
+<!-- ── Footer ── -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-copy">&copy; 2026 Clearline Advisory. All rights reserved.</div>
+      <ul class="footer-links">
+        <li><a href="mailto:charlotte@clearlineadvisory.ca">charlotte@clearlineadvisory.ca</a></li>
+        <li><a href="#">Toronto, ON</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── Intersection Observer for scroll reveals ──
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.15 });
+
+document.querySelectorAll('.reveal, .value-stat-box').forEach(el => {
+  revealObserver.observe(el);
+});
+
+// ── Animated stat counters ──
+let statsCounted = false;
+const statsObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !statsCounted) {
+      statsCounted = true;
+      animateStats();
+      statsObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.3 });
+
+const statsContainer = document.querySelector('.value-stats');
+if (statsContainer) statsObserver.observe(statsContainer);
+
+function animateStats() {
+  document.querySelectorAll('.value-stat[data-target]').forEach(el => {
+    const target = parseInt(el.dataset.target);
+    const suffix = el.dataset.suffix || '';
+    const duration = 1800;
+    const start = performance.now();
+
+    function update(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      // Ease out cubic
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = Math.round(eased * target);
+      el.textContent = current + suffix;
+      if (progress < 1) requestAnimationFrame(update);
+    }
+    requestAnimationFrame(update);
+  });
+}
+
+// ── Animated bar chart ──
+const chartObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.querySelectorAll('.chart-bar-fill').forEach(bar => {
+        const w = bar.dataset.width;
+        setTimeout(() => { bar.style.width = w; }, 200);
+      });
+      chartObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.5 });
+
+document.querySelectorAll('.value-chart').forEach(el => chartObserver.observe(el));
+
+// ── Nav scroll shadow ──
+const nav = document.querySelector('nav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 20) {
+    nav.style.boxShadow = '0 1px 8px rgba(0,0,0,0.06)';
+  } else {
+    nav.style.boxShadow = 'none';
+  }
+}, { passive: true });
+</script>
+
+</body>
+</html>
