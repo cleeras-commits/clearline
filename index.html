@@ -262,10 +262,17 @@
 
   /* ── Divider ── */
   .divider {
-    height: 1px;
-    background: var(--silver);
+    width: 120px;
+    height: 2px;
+    background: var(--terracotta);
     max-width: 1080px;
-    margin: 0 auto;
+    margin-left: max(32px, calc((100% - 1080px) / 2 + 32px));
+    border-radius: 2px;
+    transform: scaleX(0);
+    transform-origin: left center;
+  }
+  .divider.divider-visible {
+    animation: drawLine 0.9s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   }
 
   /* ── Value Proposition ── */
@@ -382,51 +389,38 @@
   .bar-terra { background: var(--terracotta); }
   .bar-sand { background: var(--warm-sand); }
 
-  /* ── Services ── */
-  .services-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    margin-top: 48px;
+  /* ── Services (editorial rows) ── */
+  .services-list {
+    margin-top: 32px;
+    padding-left: 40px;
   }
 
-  .service-card {
-    background: white;
-    border: 1px solid var(--silver);
-    border-radius: 12px;
-    padding: 36px 32px;
-    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  .service-row {
+    padding: 28px 24px;
     position: relative;
-    overflow: hidden;
+    transition: background 0.2s ease;
+    border-radius: 0 8px 8px 0;
+    margin: 0 -24px;
   }
 
-  .service-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  .service-row::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0; bottom: 0;
+    width: 3px;
+    background: var(--terracotta);
+    border-radius: 0 2px 2px 0;
+    opacity: 0;
+    transition: opacity 0.2s ease;
   }
 
-  .service-icon {
-    width: 48px;
-    height: 48px;
-    border-radius: 12px;
-    background: var(--terracotta-light);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
-  }
+  .service-row:hover { background: var(--linen); }
+  .service-row:hover::before { opacity: 1; }
+  .service-row:hover .service-row-name { color: var(--terracotta); }
+  .service-row:hover .service-row-desc { color: var(--ink); }
 
-  .service-icon svg {
-    width: 24px;
-    height: 24px;
-    stroke: var(--terracotta);
-    fill: none;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-  }
-
-  .service-tag {
+  .service-row-tag {
     display: inline-block;
     font-size: 10px;
     font-weight: 700;
@@ -436,40 +430,32 @@
     background: var(--terracotta-light);
     padding: 4px 10px;
     border-radius: 4px;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
   }
 
-  .service-card h3 { font-size: 20px; margin-bottom: 12px; }
-
-  .service-card p {
-    font-size: 14px;
-    color: var(--slate);
-    line-height: 1.6;
-    margin-bottom: 20px;
+  .service-row-name {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--ink);
+    letter-spacing: -0.8px;
+    line-height: 1.15;
+    margin-bottom: 8px;
+    transition: color 0.2s ease;
   }
 
-  .service-detail {
+  .service-row-detail {
     font-size: 13px;
     color: var(--stone);
-    padding-top: 16px;
-    border-top: 1px solid var(--silver);
+    margin-bottom: 16px;
   }
 
-  /* Hover accent line on service cards */
-  .service-card::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: var(--terracotta);
-    transform: scaleX(0);
-    transform-origin: center;
-    transition: transform 0.3s ease;
+  .service-row-desc {
+    font-size: 15px;
+    color: var(--slate);
+    line-height: 1.7;
+    max-width: 640px;
+    transition: color 0.2s ease;
   }
-
-  .service-card:hover::after { transform: scaleX(1); }
 
   /* ── Process ── */
   .process-section {
@@ -511,7 +497,10 @@
     animation-play-state: running;
   }
 
-  .process-step { position: relative; }
+  .process-step {
+    position: relative;
+    text-align: center;
+  }
 
   .step-number-wrap {
     position: relative;
@@ -553,6 +542,8 @@
     display: flex;
     gap: 6px;
     margin-top: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
   }
 
   .step-icon-pill {
@@ -707,7 +698,9 @@
     .value-grid,
     .about-content { grid-template-columns: 1fr; gap: 40px; }
 
-    .services-grid,
+    .services-list { padding-left: 20px; }
+    .service-row { padding: 24px 16px; margin: 0 -16px; }
+    .service-row::before { left: 0; }
     .process-steps { grid-template-columns: 1fr; }
 
     .process-steps::before { display: none; }
@@ -904,47 +897,36 @@
     <h2>Three ways to work together</h2>
     <p>Every engagement starts with understanding where you are. From there, we build the right plan for your stage and budget.</p>
 
-    <div class="services-grid">
-      <div class="service-card reveal">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        </div>
-        <div class="service-tag">Starting point</div>
-        <h3>Ops Diagnostic</h3>
-        <p>A comprehensive assessment of your current operations — identifying bottlenecks, founder dependencies, and the highest-impact areas for improvement.</p>
-        <div class="service-detail">2-week engagement &middot; Includes prioritized roadmap</div>
+    <div class="services-list">
+      <div class="service-row reveal">
+        <div class="service-row-tag">Starting point</div>
+        <div class="service-row-name">Ops Diagnostic</div>
+        <div class="service-row-detail">2-week engagement &middot; Includes prioritized roadmap</div>
+        <p class="service-row-desc">A comprehensive assessment of your current operations — identifying bottlenecks, founder dependencies, and the highest-impact areas for improvement.</p>
       </div>
 
-      <div class="service-card reveal reveal-delay-1">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-        </div>
-        <div class="service-tag">Most popular</div>
-        <h3>Implementation Sprint</h3>
-        <p>Hands-on execution of your operational roadmap. We build the systems, document the processes, and set up the tools your team needs to run without you.</p>
-        <div class="service-detail">8&ndash;12 week engagement &middot; Monthly retainer</div>
+      <div class="service-row reveal">
+        <div class="service-row-tag">Most popular</div>
+        <div class="service-row-name">Implementation Sprint</div>
+        <div class="service-row-detail">8&ndash;12 week engagement &middot; Monthly retainer</div>
+        <p class="service-row-desc">Hands-on execution of your operational roadmap. We build the systems, document the processes, and set up the tools your team needs to run without you.</p>
       </div>
 
-      <div class="service-card reveal reveal-delay-2">
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <div class="service-tag">Ongoing</div>
-        <h3>Retained Advisory</h3>
-        <p>Ongoing fractional COO support — strategic planning, team alignment, quarterly reviews, and operational leadership as your business evolves.</p>
-        <div class="service-detail">Flexible monthly commitment &middot; 2 days/week typical</div>
+      <div class="service-row reveal">
+        <div class="service-row-tag">Ongoing</div>
+        <div class="service-row-name">Retained Advisory</div>
+        <div class="service-row-detail">Flexible monthly commitment &middot; 2 days/week typical</div>
+        <p class="service-row-desc">Ongoing fractional COO support — strategic planning, team alignment, quarterly reviews, and operational leadership as your business evolves.</p>
       </div>
     </div>
   </div>
 </section>
 
-<div class="divider"></div>
-
 <!-- ── Process ── -->
 <section id="process" class="process-section">
   <div class="container">
     <div class="section-label">How it works</div>
-    <h2>From chaos to clarity in three steps</h2>
+    <h2>From chaos to clarity.</h2>
     <p>No lengthy proposals or complicated onboarding. We start with a conversation and move fast.</p>
 
     <div class="process-steps">
@@ -993,7 +975,7 @@
     <div class="section-label">About</div>
     <div class="about-content">
       <div class="about-text">
-        <h2>Built by a founder who's been in the room</h2>
+        <h2>Built by a founder who's been in the room.</h2>
         <p>Clearline Advisory is led by Charlotte L. Rasmussen, an operations strategist with deep experience in scaling businesses from the inside.</p>
         <p>With a background in global agency operations at one of the world's largest marketing networks, Charlotte has spent years building the systems that keep complex, multi-stakeholder organizations running smoothly — project management frameworks, cross-functional workflows, resource planning, and operational reporting.</p>
         <p>She founded Clearline Advisory with a specific mission: to bring that same calibre of operational thinking to founder-led businesses that are ready to scale but don't yet need (or can't yet afford) a full-time COO.</p>
@@ -1162,6 +1144,20 @@ if (processSteps) {
     });
   }, { threshold: 0.3 }).observe(processSteps);
 }
+
+// ── Divider draw animation (wait for first scroll) ──
+const dividerObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('divider-visible');
+      dividerObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.5 });
+window.addEventListener('scroll', function startDividers() {
+  document.querySelectorAll('.divider').forEach(d => dividerObserver.observe(d));
+  window.removeEventListener('scroll', startDividers);
+}, { passive: true });
 
 // ── Email obfuscation (assembled at runtime — not in HTML source) ──
 (function() {
