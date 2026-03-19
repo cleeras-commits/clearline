@@ -342,51 +342,88 @@
     margin-bottom: 16px;
   }
 
-  .chart-bars {
+  /* Stacked week bar */
+  .week-bar-group {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 18px;
   }
 
-  .chart-bar-row {
+  .week-bar-wrapper {
     display: flex;
-    align-items: center;
-    gap: 12px;
+    flex-direction: column;
+    gap: 6px;
   }
 
-  .chart-bar-label {
-    font-size: 12px;
-    color: var(--slate);
-    width: 80px;
-    text-align: right;
-    flex-shrink: 0;
-  }
-
-  .chart-bar-track {
-    flex: 1;
-    height: 24px;
-    background: var(--silver);
-    border-radius: 4px;
-    overflow: hidden;
-    position: relative;
-  }
-
-  .chart-bar-fill {
-    height: 100%;
-    border-radius: 4px;
-    transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    width: 0;
+  .week-bar-header {
     display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding-right: 8px;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .week-bar-label {
     font-size: 11px;
     font-weight: 700;
-    color: white;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--slate);
   }
 
-  .bar-terra { background: var(--terracotta); }
-  .bar-sand { background: var(--warm-sand); }
+  .week-bar-hours {
+    font-size: 11px;
+    color: var(--stone);
+  }
+
+  .week-bar-track {
+    display: flex;
+    height: 32px;
+    border-radius: 6px;
+    overflow: hidden;
+    background: var(--silver);
+  }
+
+  .week-bar-seg {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 600;
+    color: white;
+    transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .seg-admin { background: var(--stone); }
+  .seg-ops { background: var(--warm-sand); }
+  .seg-firefighting { background: #DC6B4A; }
+  .seg-strategy { background: var(--terracotta); }
+  .seg-growth { background: #0D9488; }
+  .seg-clients { background: var(--ink); }
+
+  .week-bar-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 8px;
+  }
+
+  .week-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 10px;
+    color: var(--slate);
+  }
+
+  .week-legend-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
 
   /* ── Services (editorial rows) ── */
   .services-list {
@@ -953,19 +990,41 @@
         <p style="margin-top: 16px;">That's where a fractional COO comes in &mdash; senior operational leadership, on your terms, at a fraction of the cost.</p>
 
         <div class="value-chart reveal">
-          <div class="value-chart-title">Where your time goes</div>
-          <div class="chart-bars">
-            <div class="chart-bar-row">
-              <div class="chart-bar-label">Before</div>
-              <div class="chart-bar-track">
-                <div class="chart-bar-fill bar-sand" data-width="75%" style="width: 0">75% ops</div>
+          <div class="value-chart-title">Your 40-hour week</div>
+          <div class="week-bar-group">
+            <div class="week-bar-wrapper">
+              <div class="week-bar-header">
+                <span class="week-bar-label">Before</span>
+                <span class="week-bar-hours">16 hrs on admin alone</span>
+              </div>
+              <div class="week-bar-track">
+                <div class="week-bar-seg seg-admin" data-seg-width="40%" style="width:0">Admin</div>
+                <div class="week-bar-seg seg-firefighting" data-seg-width="20%" style="width:0">Firefighting</div>
+                <div class="week-bar-seg seg-ops" data-seg-width="20%" style="width:0">Ops</div>
+                <div class="week-bar-seg seg-clients" data-seg-width="12.5%" style="width:0">Clients</div>
+                <div class="week-bar-seg seg-strategy" data-seg-width="7.5%" style="width:0"></div>
               </div>
             </div>
-            <div class="chart-bar-row">
-              <div class="chart-bar-label">After</div>
-              <div class="chart-bar-track">
-                <div class="chart-bar-fill bar-terra" data-width="30%" style="width: 0">30% ops</div>
+            <div class="week-bar-wrapper">
+              <div class="week-bar-header">
+                <span class="week-bar-label">After Clearline</span>
+                <span class="week-bar-hours">time back where it counts</span>
               </div>
+              <div class="week-bar-track">
+                <div class="week-bar-seg seg-strategy" data-seg-width="30%" style="width:0">Strategy</div>
+                <div class="week-bar-seg seg-growth" data-seg-width="25%" style="width:0">Growth</div>
+                <div class="week-bar-seg seg-clients" data-seg-width="25%" style="width:0">Clients</div>
+                <div class="week-bar-seg seg-ops" data-seg-width="12.5%" style="width:0">Ops</div>
+                <div class="week-bar-seg seg-admin" data-seg-width="7.5%" style="width:0"></div>
+              </div>
+            </div>
+            <div class="week-bar-legend">
+              <div class="week-legend-item"><div class="week-legend-dot" style="background:var(--stone)"></div>Admin</div>
+              <div class="week-legend-item"><div class="week-legend-dot" style="background:#DC6B4A"></div>Firefighting</div>
+              <div class="week-legend-item"><div class="week-legend-dot" style="background:var(--warm-sand)"></div>Ops</div>
+              <div class="week-legend-item"><div class="week-legend-dot" style="background:var(--ink)"></div>Clients</div>
+              <div class="week-legend-item"><div class="week-legend-dot" style="background:var(--terracotta)"></div>Strategy</div>
+              <div class="week-legend-item"><div class="week-legend-dot" style="background:#0D9488"></div>Growth</div>
             </div>
           </div>
         </div>
@@ -1195,14 +1254,14 @@
         <div class="resource-tag">Free</div>
         <h3>The Founder's Operations Scorecard</h3>
         <p>Find out where you fall on the spectrum from "everything runs through me" to "my business runs without me." Takes 5 minutes.</p>
-        <a href="#contact" class="resource-cta">Get the scorecard &rarr;</a>
+        <a href="scorecard.html" class="resource-cta">Get the scorecard &rarr;</a>
       </div>
 
       <div class="resource-card reveal reveal-delay-1">
         <div class="resource-tag">Free</div>
         <h3>5 Workflows You Should Automate This Week</h3>
         <p>A short, practical guide to handing off the repetitive work &mdash; no technical background needed.</p>
-        <a href="#contact" class="resource-cta">Get the guide &rarr;</a>
+        <a href="5-workflows.pdf" target="_blank" class="resource-cta">Get the guide &rarr;</a>
       </div>
     </div>
   </div>
@@ -1305,9 +1364,9 @@ function animateStats() {
 const chartObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      entry.target.querySelectorAll('.chart-bar-fill').forEach(bar => {
-        const w = bar.dataset.width;
-        setTimeout(() => { bar.style.width = w; }, 200);
+      entry.target.querySelectorAll('.week-bar-seg').forEach((seg, i) => {
+        const w = seg.dataset.segWidth;
+        if (w) setTimeout(() => { seg.style.width = w; }, 150 + i * 80);
       });
       chartObserver.unobserve(entry.target);
     }

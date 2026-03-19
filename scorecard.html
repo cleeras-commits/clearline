@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Founder's Operations Scorecard — Clearline Advisory</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --ink: #111827;
+    --terracotta: #A0522D;
+    --terracotta-hover: #8B4726;
+    --terracotta-light: rgba(160, 82, 45, 0.08);
+    --warm-sand: #C9B99A;
+    --snow: #FAFAFA;
+    --linen: #FAF8F5;
+    --graphite: #374151;
+    --slate: #64748B;
+    --stone: #94A3B8;
+    --silver: #E5E7EB;
+    --green: #059669;
+    --green-light: #ECFDF5;
+    --amber: #D97706;
+    --amber-light: #FFFBEB;
+    --red: #DC2626;
+    --red-light: #FEF2F2;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--snow);
+    color: var(--graphite);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.7;
+    font-size: 16px;
+  }
+
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ── Header ── */
+  .header {
+    padding: 48px 0 32px;
+    border-bottom: 1px solid var(--silver);
+    margin-bottom: 48px;
+  }
+
+  .logo {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--ink);
+    letter-spacing: -0.5px;
+    margin-bottom: 4px;
+  }
+
+  .logo-sub {
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 3.5px;
+    text-transform: uppercase;
+    color: var(--slate);
+  }
+
+  .header h1 {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--ink);
+    letter-spacing: -1px;
+    margin-top: 24px;
+    line-height: 1.15;
+  }
+
+  .header p {
+    font-size: 17px;
+    color: var(--slate);
+    margin-top: 12px;
+    max-width: 580px;
+    line-height: 1.6;
+  }
+
+  .header .time-badge {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--terracotta);
+    background: var(--terracotta-light);
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-top: 16px;
+  }
+
+  /* ── Progress ── */
+  .progress-bar-wrap {
+    position: sticky;
+    top: 0;
+    background: rgba(250, 250, 250, 0.95);
+    backdrop-filter: blur(8px);
+    padding: 16px 0;
+    z-index: 10;
+    border-bottom: 1px solid var(--silver);
+    margin: 0 -24px;
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .progress-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  .progress-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--slate);
+  }
+
+  .progress-count {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--terracotta);
+  }
+
+  .progress-track {
+    height: 4px;
+    background: var(--silver);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: var(--terracotta);
+    border-radius: 4px;
+    transition: width 0.4s ease;
+    width: 0%;
+  }
+
+  /* ── Category ── */
+  .category {
+    margin-bottom: 48px;
+  }
+
+  .category-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+
+  .category-number {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--terracotta);
+    letter-spacing: -1px;
+    line-height: 1;
+    min-width: 40px;
+  }
+
+  .category-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: -0.5px;
+  }
+
+  .category-desc {
+    font-size: 14px;
+    color: var(--slate);
+    margin-bottom: 20px;
+    padding-left: 54px;
+  }
+
+  /* ── Question ── */
+  .question {
+    background: white;
+    border: 1px solid var(--silver);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 12px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .question:hover {
+    border-color: var(--warm-sand);
+  }
+
+  .question.answered {
+    border-color: var(--green);
+    background: var(--green-light);
+  }
+
+  .question-text {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 16px;
+    line-height: 1.5;
+  }
+
+  .options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 1px solid var(--silver);
+    background: var(--snow);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    font-size: 14px;
+    color: var(--graphite);
+  }
+
+  .option:hover {
+    border-color: var(--terracotta);
+    background: var(--terracotta-light);
+  }
+
+  .option.selected {
+    border-color: var(--terracotta);
+    background: var(--terracotta-light);
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .option-dot {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid var(--stone);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.15s ease;
+  }
+
+  .option.selected .option-dot {
+    border-color: var(--terracotta);
+    background: var(--terracotta);
+  }
+
+  .option.selected .option-dot::after {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: white;
+    border-radius: 50%;
+  }
+
+  /* ── Results ── */
+  .results {
+    display: none;
+    margin-top: 48px;
+    padding-bottom: 96px;
+  }
+
+  .results.visible { display: block; }
+
+  .results-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+
+  .results-header h2 {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--ink);
+    letter-spacing: -0.8px;
+    margin-bottom: 8px;
+  }
+
+  .score-big {
+    font-size: 72px;
+    font-weight: 800;
+    letter-spacing: -3px;
+    line-height: 1;
+    margin: 24px 0 8px;
+  }
+
+  .score-label {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .score-subtitle {
+    font-size: 14px;
+    color: var(--slate);
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .score-red { color: var(--red); }
+  .score-amber { color: var(--amber); }
+  .score-green { color: var(--green); }
+
+  /* ── Category scores ── */
+  .cat-scores {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+
+  .cat-score-card {
+    background: white;
+    border: 1px solid var(--silver);
+    border-radius: 12px;
+    padding: 20px;
+  }
+
+  .cat-score-name {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--slate);
+    margin-bottom: 8px;
+  }
+
+  .cat-score-bar-track {
+    height: 8px;
+    background: var(--silver);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 8px;
+  }
+
+  .cat-score-bar-fill {
+    height: 100%;
+    border-radius: 4px;
+    transition: width 0.8s ease;
+  }
+
+  .cat-score-value {
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -1px;
+  }
+
+  .cat-score-max {
+    font-size: 13px;
+    color: var(--stone);
+    font-weight: 400;
+  }
+
+  /* ── Recommendations ── */
+  .reco-section {
+    margin-bottom: 40px;
+  }
+
+  .reco-section h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 16px;
+  }
+
+  .reco-card {
+    background: white;
+    border: 1px solid var(--silver);
+    border-left: 3px solid var(--terracotta);
+    border-radius: 0 12px 12px 0;
+    padding: 20px 24px;
+    margin-bottom: 12px;
+  }
+
+  .reco-card-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+
+  .reco-card-text {
+    font-size: 14px;
+    color: var(--slate);
+    line-height: 1.6;
+  }
+
+  /* ── CTA ── */
+  .results-cta {
+    text-align: center;
+    background: var(--linen);
+    border-radius: 16px;
+    padding: 48px 32px;
+    margin-top: 48px;
+  }
+
+  .results-cta h3 {
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+
+  .results-cta p {
+    font-size: 15px;
+    color: var(--slate);
+    margin: 0 auto 24px;
+    max-width: 440px;
+  }
+
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--terracotta);
+    color: white;
+    padding: 14px 32px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+
+  .cta-btn:hover { background: var(--terracotta-hover); }
+
+  /* ── Footer ── */
+  .scorecard-footer {
+    text-align: center;
+    padding: 32px 0;
+    border-top: 1px solid var(--silver);
+    margin-top: 48px;
+  }
+
+  .scorecard-footer p {
+    font-size: 13px;
+    color: var(--stone);
+    margin: 0 auto;
+  }
+
+  .scorecard-footer a {
+    color: var(--terracotta);
+    text-decoration: none;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 600px) {
+    .cat-scores { grid-template-columns: 1fr; }
+    .header h1 { font-size: 26px; }
+    .score-big { font-size: 56px; }
+    .category-desc { padding-left: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="logo">Clearline</div>
+    <div class="logo-sub">Advisory</div>
+    <h1>The Founder's Operations Scorecard</h1>
+    <p>Find out where you fall on the spectrum from "everything runs through me" to "my business runs without me."</p>
+    <div class="time-badge">Takes about 5 minutes</div>
+  </div>
+
+  <!-- Progress -->
+  <div class="progress-bar-wrap">
+    <div class="progress-info">
+      <span class="progress-label">Your progress</span>
+      <span class="progress-count" id="progressCount">0 / 20 answered</span>
+    </div>
+    <div class="progress-track">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+  </div>
+
+  <!-- Questions -->
+  <div id="questionnaire">
+
+    <!-- Category 1: Founder Dependency -->
+    <div class="category">
+      <div class="category-header">
+        <div class="category-number">01</div>
+        <div class="category-title">Founder Dependency</div>
+      </div>
+      <p class="category-desc">How much of your business runs through you personally?</p>
+
+      <div class="question" data-cat="dependency">
+        <div class="question-text">If you took two weeks off with no phone, how much of the business would keep running?</div>
+        <div class="options">
+          <div class="option" data-val="1"><div class="option-dot"></div>Almost nothing — it would grind to a halt</div>
+          <div class="option" data-val="2"><div class="option-dot"></div>A few things would continue, but most would stall</div>
+          <div class="option" data-val="3"><div class="option-dot"></div>Day-to-day would be fine, but decisions would pile up</div>
+          <div class="option" data-val="4"><div class="option-dot"></div>Most things would run smoothly with minor hiccups</div>
+          <div class="option" data-val="5"><div class="option-dot"></div>Business would run fine — my team knows what to do</div>
+        </div>
+      </div>
+
+      <div class="question" data-cat="dependency">
+        <div class="question-text">How many decisions per day require your personal approval?</div>
+        <div class="options">
+          <div class="option" data-val="1"><div class="option-dot"></div>10+ — I approve almost everything</div>
+          <div class="option" data-val="2"><div class="option-dot"></div>5–10 — most things still come to me</div>
+          <div class="option" data-val="3"><div class="option-dot"></div>3–5 — some things are delegated</div>
+          <div class="option" data-val="4"><div class="option-dot"></div>1–2 — only the big stuff</div>
+          <div class="option" data-val="5"><div class="option-dot"></div>Rarely — my team has clear decision-making authority</div>
+        </div>
+      </div>
+
+      <div class="question" data-cat="dependency">
+        <div class="question-text">When a new team member starts, who trains them?</div>
+        <div class="options">
+          <div class="option" data-val="1"><div class="option-dot"></div>Me, personally, every time</div>
+          <div class="option" data-val="2"><div class="option-dot"></div>Mostly me, with some help from the team</div>
+          <div class="option" data-val="3"><div class="option-dot"></div>A mix — I handle the important parts</div>
+          <div class="option" data-val="4"><div class="option-dot"></div>The team handles most of it using documented processes</div>
+          <div class="option" data-val="5"><div class="option-dot"></div>There's a full onboarding process that runs without me</div>
+        </div>
+      </div>
+
+      <div class="question" data-cat="dependency">
+        <div class="question-text">How often do you work on tasks that someone else could handle?</div>
+        <div class="options">
+          <div class="option" data-val="1"><div class="option-dot"></div>Constantly — I do everything from strategy to admin</div>
+          <div class="option" data-val="2"><div class="option-dot"></div>Often — I know I should delegate but don't</div>
+          <div class="option" data-val="3"><div class="option-dot"></div>Sometimes — I've started letting go of some things</div>
+          <div class="option" data-val="4"><div class="option-dot"></div>Rarely — most tasks are handled by the right people</div>
+          <div class="option" data-val="5"><div class="option-dot"></div>Almost never — I focus on strategy and leadership</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Category 2: Process & Documentation -->
+    <div class="category">
+      <div class="category-header">
+        <div class="category-number">02</div>
+        <div class="category-title">Processes &amp; Documentation</div>
+      </div>
+      <p class="category-desc">Are your key workflows documented and repeatable?</p>
+
+      <div class="question" data-cat="process">
+        <div class="question-text">If your best employee quit tomorrow, how much of their role is documented?</div>
+        <div class="options">
+          <div class="option" data-val="1"><div class="option-dot"></div>Nothing — it's all in their head</div>
+          <div class="option" data-val="2"><div class="option-dot"></div>Some rough notes, but nothing someone could follow</div>
+          <div class="option" data-val="3"><div class="option-dot"></div>Key tasks are loosely documented</div>
+          <div class="option" data-val="4"><div class="option-dot"></div>Most of their role has step-by-step documentation</div>
+          <div class="option" data-val="5"><div class="option-dot"></div>Fully documented — a new hire could pick it up quickly</div>
+        </div>
+      </div>
+
+      <div class="question" data-cat="process">
+        <div class="question-text">How would you describe your client onboarding process?</div>
+        <div class="options">
+          <div class="option" data-val="1"><div class="option-dot"></div>We wing it every time</div>
+          <div class="option" data-val="2"><div class="option-dot"></div>There's a loose process but it's different every time</div>
+          <div class="option" data-val="3"><div class="option-dot"></div>We have a basic checklist we mostly follow</div>
+          <div class="option" data-val="4"><div class="option-dot"></div>It's documented and consistent</div>
+          <div class="option" data-val="5"><div class="option-dot"></div>It's fully systematized with templates, timelines, and automation</div>
+        </div>
+      </div>
+
+      <div class="question" data-cat="process">
+        <div class="question-text">Do you have standard operating procedures (SOPs) for your core workflows?</div>
+        <div class="options">
+          <div class="option" data-val="1"><div class="option-dot"></div>What's an SOP?</div>
+          <div class="option" data-val="2"><div class="option-dot"></div>I know we need them but haven't gotten to it</div>
+          <div class="option" data-val="3"><div class="option-dot"></div>A few exist but they're outdated or incomplete</div>
+          <div class="option" data-val="4"><div class="option-dot"></div>Most key processes are documented</div>
+          <div class="option" data-val="5"><div class="option-dot"></div>Yes — documented, current, and the team actually uses them</div>
+        </div>
+      </div>
+
+      <div class="question" data-cat="process">
+        <div class="question-text">How consistent is your service delivery from client to client?</div>
+        <div class="options">
+          <div class="option" data-val="1"><div class="option-dot"></div>Every client gets a completely different experience</div>
+          <div class="option" data-val="2"><div class="option-dot"></div>We try to be consistent but it varies a lot</div>
+          <div class="option" data-val="3"><div class="option-dot"></div>The core is similar but details differ</div>
+          <div class="option" data-val="4"><div class="option-dot"></div>Quite consistent — we follow a standard approach</div>
+          <div class="option" data-val="5"><div class="option-dot"></div>Very consistent — repeatable process with room for customization</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Category 3: Tools & Systems -->
+    <div class="category">
+      <div class="category-header">
+        <div class="category-number">03</div>
+        <div class="category-title">Tools &amp; Systems</div>
+      </div>
+      <p class="category-desc">How well does your tech stack support your operations?</p>
+
+      <div class="question" data-cat="tools">
+        <div class="question-text">How many separate tools do you use to run your business?</div>
+        <div class="options">
+          <div class="option" data-val="1"><div class="option-dot"></div>Too many to count — and none of them talk to each other</div>
+          <div class="option" data-val="2"><div class="option-dot"></div>8–12, mostly disconnected</div>
+          <div class="option" data-val="3"><div class="option-dot"></div>5–8, some integrations</div>
+          <div class="option" data-val="4"><div class="option-dot"></div>A lean stack with good integrations</div>
+          <div class="option" data-val="5"><div class="option-dot"></div>Streamlined and connected — data flows automatically</div>
+        </div>
+      </div>
+
+      <div class="question" data-cat="tools">
+        <div class="question-text">How do you track your business performance (revenue, pipeline, utilization)?</div>
+        <div class="options">
+          <div class="option" data-val="1"><div class="option-dot"></div>I don't really — I go by gut feel</div>
+          <div class="option" data-val="2"><div class="option-dot"></div>Scattered spreadsheets I update when I remember</div>
+          <div class="option" data-val="3"><div class="option-dot"></div>A few key metrics tracked but not consistently</div>
+          <div class="option" data-val="4"><div class="option-dot"></div>Regular reporting with clear KPIs</div>
+          <div class="option" data-val="5"><div class="option-dot"></div>Automated dashboards I review weekly</div>
+        </div>
+      </div>
+
+      <div class="question" data-cat="tools">
+        <div class="question-text">How much of your repetitive work is automated?</div>
+        <div class="options">
+          <div class="option" data-val="1"><div class="option-dot"></div>None — everything is done manually</div>
+          <div class="option" data-val="2"><div class="option-dot"></div>Very little — maybe email templates</div>
+          <div class="option" data-val="3"><div class="option-dot"></div>Some — a few automations here and there</div>
+          <div class="option" data-val="4"><div class="option-dot"></div>Quite a bit — most routine tasks are handled</div>
+          <div class="option" data-val="5"><div class="option-dot"></div>Extensively — we automate everything we can</div>
+        </div>
+      </div>
+
+      <div class="question" data-cat="tools">
+        <div class="question-text">Where does your important business information live?</div>
+        <div class="options">
+          <div class="option" data-val="1"><div class="option-dot"></div>In my head, my inbox, and scattered notes</div>
+          <div class="option" data-val="2"><div class="option-dot"></div>Across multiple places — hard to find things</div>
+          <div class="option" data-val="3"><div class="option-dot"></div>Mostly in a few key tools but not well organized</div>
+          <div class="option" data-val="4"><div class="option-dot"></div>Organized in a central system the team can access</div>
+          <div class="option" data-val="5"><div class="option-dot"></div>Single source of truth — structured, searchable, shared</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Category 4: Team & Growth -->
+    <div class="category">
+      <div class="category-header">
+        <div class="category-number">04</div>
+        <div class="category-title">Team &amp; Growth Readiness</div>
+      </div>
+      <p class="category-desc">Is your team structure ready for the next stage?</p>
+
+      <div class="question" data-cat="team">
+        <div class="question-text">Does every team member have a clear role with defined responsibilities?</div>
+        <div class="options">
+          <div class="option" data-val="1"><div class="option-dot"></div>No — everyone does a bit of everything</div>
+          <div class="option" data-val="2"><div class="option-dot"></div>Sort of — but there's a lot of overlap and confusion</div>
+          <div class="option" data-val="3"><div class="option-dot"></div>Mostly — key roles are defined, edges are fuzzy</div>
+          <div class="option" data-val="4"><div class="option-dot"></div>Yes — clear roles with some room for growth</div>
+          <div class="option" data-val="5"><div class="option-dot"></div>Yes — documented roles, clear accountability, growth paths</div>
+        </div>
+      </div>
+
+      <div class="question" data-cat="team">
+        <div class="question-text">How do you handle capacity when workload spikes?</div>
+        <div class="options">
+          <div class="option" data-val="1"><div class="option-dot"></div>I just work more hours</div>
+          <div class="option" data-val="2"><div class="option-dot"></div>Everyone scrambles — it's stressful</div>
+          <div class="option" data-val="3"><div class="option-dot"></div>We manage but things slip through the cracks</div>
+          <div class="option" data-val="4"><div class="option-dot"></div>We have some overflow plans and can flex</div>
+          <div class="option" data-val="5"><div class="option-dot"></div>We plan for capacity and scale up/down smoothly</div>
+        </div>
+      </div>
+
+      <div class="question" data-cat="team">
+        <div class="question-text">How confident are you that your current structure can handle 2x the revenue?</div>
+        <div class="options">
+          <div class="option" data-val="1"><div class="option-dot"></div>Not at all — we'd break</div>
+          <div class="option" data-val="2"><div class="option-dot"></div>We'd struggle badly</div>
+          <div class="option" data-val="3"><div class="option-dot"></div>We'd survive but it wouldn't be pretty</div>
+          <div class="option" data-val="4"><div class="option-dot"></div>We'd manage with some new hires and process tweaks</div>
+          <div class="option" data-val="5"><div class="option-dot"></div>We're built for it — systems and team are ready</div>
+        </div>
+      </div>
+
+      <div class="question" data-cat="team">
+        <div class="question-text">How do you and your team communicate about priorities and progress?</div>
+        <div class="options">
+          <div class="option" data-val="1"><div class="option-dot"></div>Ad hoc — whoever grabs me first</div>
+          <div class="option" data-val="2"><div class="option-dot"></div>Mostly through messages and quick calls, no rhythm</div>
+          <div class="option" data-val="3"><div class="option-dot"></div>We have some regular check-ins but they're inconsistent</div>
+          <div class="option" data-val="4"><div class="option-dot"></div>Weekly team meetings with clear agendas</div>
+          <div class="option" data-val="5"><div class="option-dot"></div>Structured cadence — dailies, weeklies, monthlies — with accountability</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Category 5: Financial Visibility -->
+    <div class="category">
+      <div class="category-header">
+        <div class="category-number">05</div>
+        <div class="category-title">Financial &amp; Operational Visibility</div>
+      </div>
+      <p class="category-desc">Can you see clearly how your business is performing?</p>
+
+      <div class="question" data-cat="visibility">
+        <div class="question-text">How quickly can you tell me your profit margin this month?</div>
+        <div class="options">
+          <div class="option" data-val="1"><div class="option-dot"></div>I honestly have no idea</div>
+          <div class="option" data-val="2"><div class="option-dot"></div>I'd need to dig through spreadsheets for an hour</div>
+          <div class="option" data-val="3"><div class="option-dot"></div>I have a rough sense but not exact numbers</div>
+          <div class="option" data-val="4"><div class="option-dot"></div>I could pull it up in a few minutes</div>
+          <div class="option" data-val="5"><div class="option-dot"></div>I know it right now — I check it regularly</div>
+        </div>
+      </div>
+
+      <div class="question" data-cat="visibility">
+        <div class="question-text">Do you know where your next 3 months of revenue is coming from?</div>
+        <div class="options">
+          <div class="option" data-val="1"><div class="option-dot"></div>No — each month feels like starting from scratch</div>
+          <div class="option" data-val="2"><div class="option-dot"></div>I have some ideas but nothing concrete</div>
+          <div class="option" data-val="3"><div class="option-dot"></div>Partially — some recurring revenue plus hopeful leads</div>
+          <div class="option" data-val="4"><div class="option-dot"></div>Yes — I have a pipeline I track</div>
+          <div class="option" data-val="5"><div class="option-dot"></div>Clear visibility — pipeline, contracts, and forecasts</div>
+        </div>
+      </div>
+
+      <div class="question" data-cat="visibility">
+        <div class="question-text">How do you know if your team's time is being used effectively?</div>
+        <div class="options">
+          <div class="option" data-val="1"><div class="option-dot"></div>I don't — I just hope everyone is productive</div>
+          <div class="option" data-val="2"><div class="option-dot"></div>By watching how busy people seem</div>
+          <div class="option" data-val="3"><div class="option-dot"></div>Some basic time tracking but I don't review it often</div>
+          <div class="option" data-val="4"><div class="option-dot"></div>We track utilization and review it regularly</div>
+          <div class="option" data-val="5"><div class="option-dot"></div>Clear utilization data tied to profitability per project/client</div>
+        </div>
+      </div>
+
+      <div class="question" data-cat="visibility">
+        <div class="question-text">How often do you review your operational performance as a whole?</div>
+        <div class="options">
+          <div class="option" data-val="1"><div class="option-dot"></div>Never — I'm too busy doing the work</div>
+          <div class="option" data-val="2"><div class="option-dot"></div>Maybe once a quarter when things feel off</div>
+          <div class="option" data-val="3"><div class="option-dot"></div>I try to check in monthly but it's inconsistent</div>
+          <div class="option" data-val="4"><div class="option-dot"></div>Monthly reviews with clear metrics</div>
+          <div class="option" data-val="5"><div class="option-dot"></div>Weekly pulse checks + monthly deep dives + quarterly planning</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Results -->
+  <div class="results" id="results">
+    <div class="results-header">
+      <div style="width: 120px; height: 2px; background: var(--terracotta); margin: 0 auto 24px; border-radius: 2px;"></div>
+      <h2>Your Operations Score</h2>
+      <div class="score-big" id="totalScore">0</div>
+      <div class="score-label" id="scoreLevel"></div>
+      <p class="score-subtitle" id="scoreSummary"></p>
+    </div>
+
+    <div class="cat-scores" id="catScores"></div>
+
+    <div class="reco-section" id="recoSection">
+      <h3>Where to focus first</h3>
+      <div id="recoCards"></div>
+    </div>
+
+    <div class="results-cta">
+      <h3>Want help fixing what you scored low on?</h3>
+      <p>Book a free 30-minute discovery call. We'll talk through your results and whether Clearline Advisory is the right fit.</p>
+      <a href="#" id="results-cta-btn" class="cta-btn">Book a discovery call &rarr;</a>
+    </div>
+  </div>
+
+  <div class="scorecard-footer">
+    <p><a href="#">clearlineadvisory.ca</a> &middot; Operations advisory for growing businesses</p>
+  </div>
+
+</div>
+
+<script>
+const questions = document.querySelectorAll('.question');
+const totalQ = questions.length;
+let answers = {};
+
+// Handle option clicks
+document.querySelectorAll('.option').forEach(opt => {
+  opt.addEventListener('click', function() {
+    const q = this.closest('.question');
+    const qIndex = Array.from(questions).indexOf(q);
+    const val = parseInt(this.dataset.val);
+    const cat = q.dataset.cat;
+
+    // Deselect siblings
+    q.querySelectorAll('.option').forEach(o => o.classList.remove('selected'));
+    this.classList.add('selected');
+    q.classList.add('answered');
+
+    answers[qIndex] = { val, cat };
+    updateProgress();
+
+    if (Object.keys(answers).length === totalQ) {
+      setTimeout(showResults, 600);
+    }
+  });
+});
+
+function updateProgress() {
+  const answered = Object.keys(answers).length;
+  document.getElementById('progressCount').textContent = `${answered} / ${totalQ} answered`;
+  document.getElementById('progressFill').style.width = `${(answered / totalQ) * 100}%`;
+}
+
+function showResults() {
+  const cats = {
+    dependency: { name: 'Founder Dependency', scores: [], max: 20 },
+    process: { name: 'Processes & Documentation', scores: [], max: 20 },
+    tools: { name: 'Tools & Systems', scores: [], max: 20 },
+    team: { name: 'Team & Growth Readiness', scores: [], max: 20 },
+    visibility: { name: 'Financial & Operational Visibility', scores: [], max: 20 }
+  };
+
+  let total = 0;
+  Object.values(answers).forEach(a => {
+    cats[a.cat].scores.push(a.val);
+    total += a.val;
+  });
+
+  const maxTotal = 100;
+  const pct = Math.round((total / maxTotal) * 100);
+
+  // Score display
+  const scoreEl = document.getElementById('totalScore');
+  const levelEl = document.getElementById('scoreLevel');
+  const summaryEl = document.getElementById('scoreSummary');
+
+  scoreEl.textContent = `${total} / ${maxTotal}`;
+
+  if (pct <= 35) {
+    scoreEl.className = 'score-big score-red';
+    levelEl.textContent = 'Founder-Dependent';
+    levelEl.style.color = 'var(--red)';
+    summaryEl.textContent = 'Your business runs on you. Growth will stay capped until you build the systems to step back from day-to-day operations.';
+  } else if (pct <= 60) {
+    scoreEl.className = 'score-big score-amber';
+    levelEl.textContent = 'Getting There';
+    levelEl.style.color = 'var(--amber)';
+    summaryEl.textContent = "You've started building some structure, but key gaps are holding you back. A focused effort on your weakest areas could free up significant time.";
+  } else if (pct <= 80) {
+    scoreEl.className = 'score-big score-green';
+    levelEl.textContent = 'Solid Foundation';
+    levelEl.style.color = 'var(--green)';
+    summaryEl.textContent = "Your operations have real structure. Now it's about optimizing, automating, and making sure everything scales with you.";
+  } else {
+    scoreEl.className = 'score-big score-green';
+    levelEl.textContent = 'Operationally Strong';
+    levelEl.style.color = 'var(--green)';
+    summaryEl.textContent = "Your business runs well. Focus on continuous improvement, automation, and strategic growth.";
+  }
+
+  // Category scores
+  const catContainer = document.getElementById('catScores');
+  catContainer.innerHTML = '';
+
+  const catOrder = Object.entries(cats).sort((a, b) => {
+    const sumA = a[1].scores.reduce((s, v) => s + v, 0);
+    const sumB = b[1].scores.reduce((s, v) => s + v, 0);
+    return sumA - sumB;
+  });
+
+  catOrder.forEach(([key, cat]) => {
+    const sum = cat.scores.reduce((s, v) => s + v, 0);
+    const catPct = Math.round((sum / cat.max) * 100);
+    let color = 'var(--green)';
+    if (catPct <= 40) color = 'var(--red)';
+    else if (catPct <= 65) color = 'var(--amber)';
+
+    catContainer.innerHTML += `
+      <div class="cat-score-card">
+        <div class="cat-score-name">${cat.name}</div>
+        <div class="cat-score-bar-track">
+          <div class="cat-score-bar-fill" style="width: ${catPct}%; background: ${color};"></div>
+        </div>
+        <div class="cat-score-value" style="color: ${color};">${sum} <span class="cat-score-max">/ ${cat.max}</span></div>
+      </div>`;
+  });
+
+  // Recommendations — focus on bottom 2 categories
+  const recoContainer = document.getElementById('recoCards');
+  recoContainer.innerHTML = '';
+
+  const recos = {
+    dependency: {
+      title: 'Reduce founder dependency',
+      text: "Start by listing every decision that currently requires your approval. For each one, ask: can someone else make this call with clear guidelines? Document the criteria and delegate. Even moving 3-4 decisions off your plate can free hours every week."
+    },
+    process: {
+      title: 'Document your core processes',
+      text: "Pick your most repeated workflow — client onboarding is usually the best starting point. Write down every step as you do it, then turn that into a simple SOP your team can follow. One documented process is worth more than ten good intentions."
+    },
+    tools: {
+      title: 'Streamline your tool stack',
+      text: "Audit every tool you're paying for. For each one: is it connected to your other tools? Is the team actually using it? Could two tools be replaced by one? Reducing from 10 disconnected tools to 5 integrated ones saves time and money."
+    },
+    team: {
+      title: 'Clarify roles and build a communication rhythm',
+      text: "Write a one-page role description for each team member — what they own, what they decide, what they escalate. Then start a simple weekly check-in: 15 minutes, what's done, what's next, what's stuck. Structure creates calm."
+    },
+    visibility: {
+      title: 'Build your operational dashboard',
+      text: "Pick 3-5 numbers that tell you if the business is healthy: revenue, margin, pipeline, utilization, and client satisfaction. Track them weekly in one place. You can't improve what you can't see."
+    }
+  };
+
+  const weakest = catOrder.slice(0, 3);
+  weakest.forEach(([key]) => {
+    const r = recos[key];
+    recoContainer.innerHTML += `
+      <div class="reco-card">
+        <div class="reco-card-title">${r.title}</div>
+        <div class="reco-card-text">${r.text}</div>
+      </div>`;
+  });
+
+  // Show results
+  document.getElementById('results').classList.add('visible');
+  document.getElementById('results').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// Email obfuscation
+(function() {
+  const u = 'charlotte';
+  const d = ['clearlineadvisory', 'ca'].join('.');
+  const href = ['mailto', u + '@' + d].join(':');
+  const btn = document.getElementById('results-cta-btn');
+  if (btn) btn.href = href;
+})();
+</script>
+
+</body>
+</html>
