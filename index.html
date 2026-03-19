@@ -4,7 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Clearline Advisory — Fractional COO for Growing Businesses</title>
-<meta name="description" content="Clearline Advisory provides fractional COO services for female-founded SMBs in Toronto. Operational clarity, scalable systems, and strategic execution.">
+<meta name="description" content="Clearline Advisory helps founders design the operations their business needs to grow — using smart processes and AI to get there faster. Fractional COO services for female-founded SMBs in Toronto.">
+<meta name="robots" content="noindex, nofollow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
@@ -384,8 +385,6 @@
     color: white;
   }
 
-  .chart-bar-fill.bar-visible { /* widths set inline */ }
-
   .bar-terra { background: var(--terracotta); }
   .bar-sand { background: var(--warm-sand); }
 
@@ -457,6 +456,60 @@
     transition: color 0.2s ease;
   }
 
+  /* ── How I Work (AI approach) ── */
+  .approach-section { background: var(--linen); }
+
+  .approach-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 32px;
+    margin-top: 40px;
+  }
+
+  .approach-card {
+    background: white;
+    border-radius: 12px;
+    padding: 32px 28px;
+    border: 1px solid var(--silver);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .approach-card:hover {
+    border-color: var(--warm-sand);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  }
+
+  .approach-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .approach-icon svg {
+    width: 22px;
+    height: 22px;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+  }
+
+  .approach-card h3 {
+    font-size: 17px;
+    margin-bottom: 10px;
+  }
+
+  .approach-card p {
+    font-size: 14px;
+    color: var(--slate);
+    line-height: 1.65;
+    max-width: none;
+  }
+
   /* ── Process ── */
   .process-section {
     background: var(--ink);
@@ -476,7 +529,6 @@
     position: relative;
   }
 
-  /* Single continuous timeline line — masked by number backgrounds */
   .process-steps::before {
     content: '';
     position: absolute;
@@ -523,7 +575,6 @@
     margin: 0 -6px;
   }
 
-
   .process-step h3 {
     color: white;
     font-size: 18px;
@@ -537,7 +588,6 @@
     max-width: none;
   }
 
-  /* Process step icon row */
   .step-icons {
     display: flex;
     gap: 6px;
@@ -623,6 +673,66 @@
     margin-top: 4px;
   }
 
+  /* ── Resources ── */
+  .resources-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-top: 40px;
+  }
+
+  .resource-card {
+    background: var(--linen);
+    border-radius: 12px;
+    padding: 32px 28px;
+    border: 1px solid var(--silver);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .resource-card:hover {
+    border-color: var(--warm-sand);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+  }
+
+  .resource-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #059669;
+    background: #ECFDF5;
+    padding: 4px 10px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+  }
+
+  .resource-card h3 {
+    font-size: 19px;
+    margin-bottom: 10px;
+  }
+
+  .resource-card p {
+    font-size: 14px;
+    color: var(--slate);
+    line-height: 1.65;
+    max-width: none;
+    margin-bottom: 20px;
+  }
+
+  .resource-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--terracotta);
+    text-decoration: none;
+    transition: gap 0.2s ease;
+  }
+
+  .resource-cta:hover { gap: 10px; }
+
   /* ── CTA Section ── */
   .cta-section {
     background: var(--linen);
@@ -642,7 +752,6 @@
     padding: 16px 36px;
   }
 
-  /* Decorative dots behind CTA */
   .cta-decoration {
     position: absolute;
     opacity: 0.06;
@@ -707,6 +816,10 @@
 
     .value-stats { grid-template-columns: 1fr 1fr; }
 
+    .approach-grid { grid-template-columns: 1fr; }
+
+    .resources-grid { grid-template-columns: 1fr; }
+
     .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
 
     .cta-decoration { display: none; }
@@ -741,8 +854,9 @@
     </div>
     <ul class="nav-links">
       <li><a href="#services">Services</a></li>
-      <li><a href="#process">Process</a></li>
+      <li><a href="#approach">How I work</a></li>
       <li><a href="#about">About</a></li>
+      <li><a href="#resources">Resources</a></li>
       <li><a href="#contact" class="nav-cta">Get in touch</a></li>
     </ul>
     <button class="nav-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('show')">
@@ -757,8 +871,8 @@
     <div class="hero-inner">
       <div>
         <div class="hero-accent"></div>
-        <h1>Your business has outgrown<br>its operating model.</h1>
-        <p class="hero-sub">Clearline Advisory helps founder-led businesses in Toronto build the operational infrastructure they need to scale — without the overhead of a full-time COO.</p>
+        <h1>Outgrown doing <span>everything</span> yourself?</h1>
+        <p class="hero-sub">I help founders design the operations their business needs to grow &mdash; without them being the bottleneck. Smart processes, the right tools, and a clear plan to get there faster.</p>
         <div class="hero-cta-wrap">
           <a href="#contact" class="hero-cta">Book a discovery call &rarr;</a>
           <a href="#services" class="hero-cta-secondary">See how it works</a>
@@ -767,17 +881,13 @@
 
       <!-- Hero graphic: floating dashboard cards -->
       <div class="hero-graphic" aria-hidden="true">
-        <!-- Abstract network/org SVG background -->
         <svg viewBox="0 0 500 400" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- Connection lines -->
           <line x1="250" y1="120" x2="140" y2="220" stroke="#C9B99A" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.5"/>
           <line x1="250" y1="120" x2="360" y2="200" stroke="#C9B99A" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.5"/>
           <line x1="140" y1="220" x2="200" y2="320" stroke="#C9B99A" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.5"/>
           <line x1="360" y1="200" x2="320" y2="310" stroke="#C9B99A" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.5"/>
           <line x1="140" y1="220" x2="60" y2="300" stroke="#C9B99A" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.3"/>
           <line x1="360" y1="200" x2="440" y2="280" stroke="#C9B99A" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.3"/>
-
-          <!-- Nodes -->
           <circle cx="250" cy="120" r="20" fill="#A0522D" opacity="0.12"/>
           <circle cx="250" cy="120" r="8" fill="#A0522D"/>
           <circle cx="140" cy="220" r="16" fill="#C9B99A" opacity="0.15"/>
@@ -792,13 +902,10 @@
           <circle cx="60" cy="300" r="4" fill="#94A3B8" opacity="0.5"/>
           <circle cx="440" cy="280" r="10" fill="#E5E7EB" opacity="0.3"/>
           <circle cx="440" cy="280" r="4" fill="#94A3B8" opacity="0.5"/>
-
-          <!-- Decorative rings -->
           <circle cx="250" cy="120" r="36" stroke="#A0522D" stroke-width="1" opacity="0.1" fill="none"/>
           <circle cx="250" cy="200" r="120" stroke="#C9B99A" stroke-width="0.5" opacity="0.08" fill="none" stroke-dasharray="4 6"/>
         </svg>
 
-        <!-- Floating info cards -->
         <div class="float-card fc-1">
           <div class="fc-icon fc-green">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
@@ -842,10 +949,9 @@
       <div>
         <div class="section-label">The challenge</div>
         <h2>You started this business. Now it needs systems to match your ambition.</h2>
-        <p>Most founders are brilliant at what they do — but eventually, growth creates bottlenecks. Decisions pile up. Processes live in your head. Your team needs structure you haven't had time to build.</p>
-        <p style="margin-top: 16px;">That's where a fractional COO comes in — senior operational leadership, on your terms, at a fraction of the cost.</p>
+        <p>Most founders are brilliant at what they do &mdash; but eventually, growth creates bottlenecks. Decisions pile up. Processes live in your head. Your team needs structure you haven't had time to build.</p>
+        <p style="margin-top: 16px;">That's where a fractional COO comes in &mdash; senior operational leadership, on your terms, at a fraction of the cost.</p>
 
-        <!-- Before/After chart -->
         <div class="value-chart reveal">
           <div class="value-chart-title">Where your time goes</div>
           <div class="chart-bars">
@@ -867,22 +973,27 @@
       <div>
         <div class="value-stats">
           <div class="value-stat-box">
-            <div class="value-stat" data-target="73" data-suffix="%">0%</div>
-            <div class="value-stat-label">of founders say operations is their biggest growth blocker</div>
+            <div class="value-stat" data-target="36" data-suffix="%">0%</div>
+            <div class="value-stat-label">of a founder's work week lost to admin tasks<sup>1</sup></div>
           </div>
           <div class="value-stat-box">
-            <div class="value-stat" data-target="10" data-suffix="+">0+</div>
-            <div class="value-stat-label">hours freed per week with proper systems in place</div>
+            <div class="value-stat" data-target="16" data-suffix=" hrs">0 hrs</div>
+            <div class="value-stat-label">per week the average entrepreneur spends on repetitive work<sup>1</sup></div>
           </div>
           <div class="value-stat-box">
-            <div class="value-stat" data-target="40" data-suffix="%">0%</div>
-            <div class="value-stat-label">typical cost savings through operating model redesign</div>
+            <div class="value-stat" data-target="30" data-suffix="%">0%</div>
+            <div class="value-stat-label">operating cost reduction through process improvement<sup>2</sup></div>
           </div>
           <div class="value-stat-box">
-            <div class="value-stat" data-target="90" data-suffix="">0</div>
-            <div class="value-stat-label">days to measurable operational improvement</div>
+            <div class="value-stat" data-target="90" data-suffix="%">0%</div>
+            <div class="value-stat-label">of SMB owners say automation improves efficiency<sup>3</sup></div>
           </div>
         </div>
+        <p style="font-size: 0.7rem; color: var(--stone); margin-top: 1rem; line-height: 1.5;">
+          <sup>1</sup> Time etc Entrepreneur Survey &nbsp;
+          <sup>2</sup> McKinsey Operations Research &nbsp;
+          <sup>3</sup> OnPay 2025 Small Business Outlook
+        </p>
       </div>
     </div>
   </div>
@@ -900,23 +1011,70 @@
     <div class="services-list">
       <div class="service-row reveal">
         <div class="service-row-tag">Starting point</div>
-        <div class="service-row-name">Ops Diagnostic</div>
+        <div class="service-row-name">The Ops Diagnostic</div>
         <div class="service-row-detail">2-week engagement &middot; Includes prioritized roadmap</div>
-        <p class="service-row-desc">A comprehensive assessment of your current operations — identifying bottlenecks, founder dependencies, and the highest-impact areas for improvement.</p>
+        <p class="service-row-desc">A full audit of how your business actually runs &mdash; team structure, workflows, tools, bottlenecks, and where time is being wasted. You walk away with a clear, prioritized roadmap: what to fix first, what to systematize, and where automation saves you hours immediately.</p>
       </div>
 
       <div class="service-row reveal">
         <div class="service-row-tag">Most popular</div>
-        <div class="service-row-name">Implementation Sprint</div>
-        <div class="service-row-detail">8&ndash;12 week engagement &middot; Monthly retainer</div>
-        <p class="service-row-desc">Hands-on execution of your operational roadmap. We build the systems, document the processes, and set up the tools your team needs to run without you.</p>
+        <div class="service-row-name">The Operating System Build</div>
+        <div class="service-row-detail">8&ndash;12 week engagement &middot; Project-based</div>
+        <p class="service-row-desc">Design and implementation of the core systems your business needs to run without everything flowing through you. Every process comes fully documented, your team gets trained on it, and the repetitive parts are automated so things actually stick.</p>
       </div>
 
       <div class="service-row reveal">
         <div class="service-row-tag">Ongoing</div>
-        <div class="service-row-name">Retained Advisory</div>
-        <div class="service-row-detail">Flexible monthly commitment &middot; 2 days/week typical</div>
-        <p class="service-row-desc">Ongoing fractional COO support — strategic planning, team alignment, quarterly reviews, and operational leadership as your business evolves.</p>
+        <div class="service-row-name">Ongoing Operations Advisory</div>
+        <div class="service-row-detail">Monthly retainer &middot; Fractional COO-level support</div>
+        <p class="service-row-desc">Senior operational advisory without the full-time hire. Monthly reviews, KPI reporting, workforce planning, and continuous improvement &mdash; keeping your systems and automations tuned as your business evolves.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── How I Work ── -->
+<section id="approach" class="approach-section">
+  <div class="container">
+    <div class="section-label">How I work</div>
+    <h2>Enterprise-level advisory. Right-sized for your business.</h2>
+    <p>I use the same methodologies I built for large-scale operations &mdash; combined with modern tools and AI &mdash; to deliver faster and keep costs lower than traditional consulting. That's what makes Clearline Advisory different.</p>
+
+    <div class="approach-grid">
+      <div class="approach-card reveal">
+        <div class="approach-icon" style="background: var(--terracotta-light);">
+          <svg viewBox="0 0 24 24" stroke="var(--terracotta)">
+            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+          </svg>
+        </div>
+        <h3>Proven playbooks</h3>
+        <p>The operational frameworks that keep 1,000-person organizations running work just as well at 15 people. I translate them for your size and stage.</p>
+      </div>
+
+      <div class="approach-card reveal reveal-delay-1">
+        <div class="approach-icon" style="background: #EFF6FF;">
+          <svg viewBox="0 0 24 24" stroke="#3B82F6">
+            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+            <path d="M2 17l10 5 10-5"/>
+            <path d="M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <h3>Smart automation</h3>
+        <p>I use AI tools to move faster and deliver more &mdash; which means you get the rigour of a full operations team without the overhead. The result: better systems at a price that makes sense.</p>
+      </div>
+
+      <div class="approach-card reveal reveal-delay-2">
+        <div class="approach-icon" style="background: #ECFDF5;">
+          <svg viewBox="0 0 24 24" stroke="#059669">
+            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+          </svg>
+        </div>
+        <h3>Built to stick</h3>
+        <p>I don't just hand you a strategy deck and walk away. Every system comes with documentation, team training, and follow-up support so your team actually uses it.</p>
       </div>
     </div>
   </div>
@@ -925,7 +1083,7 @@
 <!-- ── Process ── -->
 <section id="process" class="process-section">
   <div class="container">
-    <div class="section-label">How it works</div>
+    <div class="section-label">The process</div>
     <h2>From chaos to clarity.</h2>
     <p>No lengthy proposals or complicated onboarding. We start with a conversation and move fast.</p>
 
@@ -946,7 +1104,7 @@
         <div class="step-number-wrap">
           <div class="step-number">02</div>
         </div>
-        <h3>Diagnostic & Roadmap</h3>
+        <h3>Diagnostic &amp; Roadmap</h3>
         <p>A structured assessment of your operations, resulting in a clear, prioritized plan with quick wins and long-term improvements.</p>
         <div class="step-icons">
           <span class="step-icon-pill">2 weeks</span>
@@ -958,8 +1116,8 @@
         <div class="step-number-wrap">
           <div class="step-number">03</div>
         </div>
-        <h3>Build & Implement</h3>
-        <p>We roll up our sleeves and build the systems together — processes, tools, documentation, and team alignment to make it stick.</p>
+        <h3>Build &amp; Implement</h3>
+        <p>We build the systems together &mdash; processes, tools, documentation, and team training to make it stick.</p>
         <div class="step-icons">
           <span class="step-icon-pill">8&ndash;12 weeks</span>
           <span class="step-icon-pill">Hands-on</span>
@@ -975,11 +1133,11 @@
     <div class="section-label">About</div>
     <div class="about-content">
       <div class="about-text">
-        <h2>Built by a founder who's been in the room.</h2>
-        <p>Clearline Advisory is led by Charlotte L. Rasmussen, an operations strategist with deep experience in scaling businesses from the inside.</p>
-        <p>With a background in global agency operations at one of the world's largest marketing networks, Charlotte has spent years building the systems that keep complex, multi-stakeholder organizations running smoothly — project management frameworks, cross-functional workflows, resource planning, and operational reporting.</p>
-        <p>She founded Clearline Advisory with a specific mission: to bring that same calibre of operational thinking to founder-led businesses that are ready to scale but don't yet need (or can't yet afford) a full-time COO.</p>
-        <p style="color: var(--slate); font-style: italic;">Based in Toronto. Working with ambitious founders across the GTA.</p>
+        <h2>Your operations advisor &mdash; built on real experience at scale.</h2>
+        <p>Clearline Advisory is led by Charlotte L. Rasmussen &mdash; a Danish-born operations advisor who spent the last six years building and running operations inside a global agency network, scaling a region from startup mode to 80 people across Canada and Costa Rica.</p>
+        <p>What she loves most is watching all the pieces click into place &mdash; the right people, the right systems, everything running the way it should. Growing up in Denmark probably wired her that way &mdash; structure and efficiency aren't ideals, they're the default.</p>
+        <p>She kept having the same conversation with founders: <em>"Everything runs through me. I can't step away. I know I need to fix this but I don't even know where to start."</em> The operational playbooks that work for large organizations work just as well at 15 people &mdash; but small businesses don't get access to that thinking.</p>
+        <p>Then AI changed the math. The tools that exist now make it possible to deliver that same level of rigour at a price point that makes sense for a growing business. That's why Clearline exists &mdash; to bring enterprise-calibre operations to the founders who are passionate about what they've built but feel stuck running it.</p>
       </div>
       <div class="about-credentials">
         <div class="credential-item">
@@ -997,7 +1155,7 @@
           </div>
           <div>
             <div class="credential-label">Background</div>
-            <div class="credential-value">Global agency operations (WPP network)</div>
+            <div class="credential-value">Global agency operations &mdash; 80-person teams across the Americas</div>
           </div>
         </div>
         <div class="credential-item">
@@ -1005,8 +1163,8 @@
             <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           </div>
           <div>
-            <div class="credential-label">Expertise</div>
-            <div class="credential-value">Process design, team structure, operational systems</div>
+        <div class="credential-label">Approach</div>
+            <div class="credential-value">Advisory-led: proven playbooks + smart automation = faster, leaner results</div>
           </div>
         </div>
         <div class="credential-item">
@@ -1025,16 +1183,42 @@
 
 <div class="divider"></div>
 
+<!-- ── Free Resources ── -->
+<section id="resources">
+  <div class="container">
+    <div class="section-label">Free resources</div>
+    <h2>Start getting your operations in order &mdash; today.</h2>
+    <p>Practical tools you can use right now, no commitment required.</p>
+
+    <div class="resources-grid">
+      <div class="resource-card reveal">
+        <div class="resource-tag">Free</div>
+        <h3>The Founder's Operations Scorecard</h3>
+        <p>Find out where you fall on the spectrum from "everything runs through me" to "my business runs without me." Takes 5 minutes.</p>
+        <a href="#contact" class="resource-cta">Get the scorecard &rarr;</a>
+      </div>
+
+      <div class="resource-card reveal reveal-delay-1">
+        <div class="resource-tag">Free</div>
+        <h3>5 Workflows You Should Automate This Week</h3>
+        <p>A short, practical guide to handing off the repetitive work &mdash; no technical background needed.</p>
+        <a href="#contact" class="resource-cta">Get the guide &rarr;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
 <!-- ── CTA ── -->
 <section id="contact" class="cta-section">
   <div class="container" style="position: relative; z-index: 1;">
     <div class="section-label">Get started</div>
-    <h2>Ready to build operations<br>that scale with you?</h2>
+    <h2>Ready to build operations<br>that grow with you?</h2>
     <p>Book a free 30-minute discovery call. We'll talk about where you are, where you want to go, and whether Clearline is the right fit.</p>
     <a href="#" id="cta-email-btn" class="hero-cta">Book a discovery call &rarr;</a>
   </div>
 
-  <!-- Decorative dot grids -->
   <svg class="cta-decoration left" width="120" height="120" viewBox="0 0 120 120" aria-hidden="true">
     <g fill="#A0522D">
       <circle cx="10" cy="10" r="3"/><circle cx="30" cy="10" r="3"/><circle cx="50" cy="10" r="3"/><circle cx="70" cy="10" r="3"/><circle cx="90" cy="10" r="3"/><circle cx="110" cy="10" r="3"/>
@@ -1108,7 +1292,6 @@ function animateStats() {
     function update(now) {
       const elapsed = now - start;
       const progress = Math.min(elapsed / duration, 1);
-      // Ease out cubic
       const eased = 1 - Math.pow(1 - progress, 3);
       const current = Math.round(eased * target);
       el.textContent = current + suffix;
@@ -1145,7 +1328,7 @@ if (processSteps) {
   }, { threshold: 0.3 }).observe(processSteps);
 }
 
-// ── Divider draw animation (wait for first scroll) ──
+// ── Divider draw animation ──
 const dividerObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -1159,7 +1342,7 @@ window.addEventListener('scroll', function startDividers() {
   window.removeEventListener('scroll', startDividers);
 }, { passive: true });
 
-// ── Email obfuscation (assembled at runtime — not in HTML source) ──
+// ── Email obfuscation ──
 (function() {
   const u = 'charlotte';
   const d = ['clearlineadvisory', 'ca'].join('.');
